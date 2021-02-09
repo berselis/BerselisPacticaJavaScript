@@ -1,5 +1,5 @@
-let diametro = window.prompt("Inserte el valor del diametro");
-let grosor = window.prompt("Inserte el valor del grosor");
+let diametro = window.prompt("PRACTICA 1: Inserte el valor del diametro");
+let grosor = window.prompt("PRACTICA 1: Inserte el valor del grosor");
 
 if(diametro > 1.4){
     console.log("la rueda es para un vehiculo grande");
