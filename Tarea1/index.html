@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Berselis J. Mendoza M.</title>
+    <link rel="stylesheet" href="pageStyle.css">
+
+
+</head>
+<body>
+    
+    <div class="container">
+
+        <div class="bannerInnerTitle">
+            <h2>Tarea Formulario y el DOM</h2>
+        </div>
+
+        <div class="bannerInnerText">
+            <p>
+                Como en la última clase ya vimos como trabajar con los formularios y más importante, 
+                vimos como interactuar con el DOM (Document Objet Model), en este ejercicio vamos a 
+                practicar lo aprendido.
+            </p>
+            <br>
+            <p>
+                Vamos a crear en un formulario el cual tendrá 2 campos los cuales los usaremos para modificar 
+                las propiedades de un elemento HTML DIV, las propiedades serán el color de fondo, el tamaño de 
+                fuentes y cambiarle la propiedad Height(altura)y Width(ancho).
+            </p>
+        </div>
+        <hr >
+        <div class="bannerInnerContent">
+
+            <table>
+                <tbody>
+                    <tr>
+                        <td class="LeftPanel">
+                            <form id="Formulario">
+                                <table>
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                            <labe>Tamaño de letra</labe><br>
+                                            <input class="Textbox" name="SizeLetra" type="number" min="10" placeholder="18" max="100"><span> px</span>
+                                        </td>
+                                        <td>
+                                            <label>Ancho Objeto</label><br>
+                                            <input class="Textbox"  name="SizeAncho" type="number" min="10" placeholder="350" max="1200"><span> px</span>
+                                        </td>
+                                        <td>
+                                            <label>Altura Objeto</label><br>
+                                            <input class="Textbox"  name="SizeAlto" type="number" min="10" placeholder="350" max="500"><span> px</span>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                                <hr>
+                                <label>Color de fondo</label><br>
+                                <input class="Textbox" id="SetColor" name="SetColor" value="#FFFFFF" type="color">
+                                <hr>
+                                <input class="btn" type="submit" value="Aplicar Cambios">
+                            </form>
+
+                        </td>
+                        <td class="RightPanel">
+
+                            <div class="objetoStyle" id="objeto">
+                                <p>Texto dentro del objeto</p>
+
+
+                            </div>
+
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <script src="fuctionScript.js"></script>
+</body>
+</html>

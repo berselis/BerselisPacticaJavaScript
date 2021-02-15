@@ -1,0 +1,103 @@
+.container{
+    width: 99%;
+    height: 800px;
+    margin: auto;
+    border:solid 1px;
+    border-radius: 10px;
+}
+.bannerInnerTitle{
+    text-align: center;
+    background-color: cornflowerblue;
+    width: 30%;
+    margin:auto;
+    border-radius: 25px;
+    
+    
+}
+.bannerInnerTitle h2{
+    font-family: "Josefin Slab","Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-weight: 700;
+    letter-spacing: 1px;
+    
+}
+.bannerInnerText{
+    text-align: center;
+    font-family: "Josefin Slab","Helvetica Neue",Helvetica,Arial,sans-serif;
+}
+.bannerInnerText p{
+    text-align: justify;
+    width: 50%;
+    margin: auto;
+}
+.bannerInnerContent{
+    display: inline-block;
+    width: 100%;
+    margin:auto;
+}
+
+.bannerInnerContent table{
+    width: 90%;
+    margin:auto;
+}
+
+.LeftPanel{
+    width: 25%;
+}
+.RightPanel{
+    border:solid 1px;
+    height: 500px;
+    border-radius: 15px;
+}
+
+.objetoStyle{
+    border:solid 3px #676767;
+    border-radius: 18%;
+    width: 350px;
+    height: 350px;
+    margin: auto;
+    text-align: center;
+    vertical-align: middle;
+}
+
+
+
+.LeftPanel p{
+    text-align: center;
+    font-family: "Josefin Slab","Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-size: 1em;
+    font-weight: 700;
+}
+
+.LeftPanel form .Textbox{
+    height: 22px;
+    color: gray;
+    font-size: 20px;
+    width: 50px;
+    text-align: center;
+    vertical-align: middle;
+    padding: 5px;
+    user-select: none;
+}
+
+
+.btn{
+    color: #ffffff;
+    font-weight: bold;
+    background-color: indigo;
+    border-color: black;
+    margin-bottom: 0;
+    text-align: center;
+    vertical-align: middle;
+    cursor: pointer;
+    padding: 6px 12px;
+    font-size: 18px;
+    border-radius: 4px;
+    user-select: none;
+    -webkit-transition: 0.2s;
+}
+.btn:hover{
+    border-radius: 10px;
+    color: black;
+    background-color:ivory;
+    border-color: gray;
+}
