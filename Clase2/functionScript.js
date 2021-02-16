@@ -2,7 +2,7 @@ const body = document.getElementById('cuerpo');
 
 const timer = setInterval(function(){
     DrawElement();
-}, 10);
+}, 1000);
 
 function StopInterval(){
     clearInterval(timer);
@@ -20,6 +20,7 @@ function DrawElement(){
 
     //Asignando un color aleatoro del arreglo de colores
     newDiv.style.backgroundColor = colores[parseInt(Math.random() * colores.length)];
+    newDiv.style.opacity = Math.random();
 
     //Asignando un punto aleatorio desde el margen dela izquierda
     let izquierda = document.getElementById('drawArea').offsetWidth / 1.232323;
