@@ -2,7 +2,7 @@ const body = document.getElementById('cuerpo');
 
 const timer = setInterval(function(){
     DrawElement();
-}, 500);
+}, 10);
 
 function StopInterval(){
     clearInterval(timer);

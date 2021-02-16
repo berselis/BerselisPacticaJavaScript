@@ -1,7 +1,9 @@
 .container{
-    width: 99%;
     height: 800px;
-    margin: auto;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 15px;
+    padding-right: 15px;
     border:solid 1px;
     border-radius: 10px;
 }
@@ -43,9 +45,11 @@
 }
 .containerArea{
     padding: 30px;
-    width: 100%;
-    margin:10px;
+    width: 93%;
+    margin: auto;
+    height: 625px;
     position: fixed;
+    /* border:solid 1px brown; */
 
 }
 .drawElementNew{
