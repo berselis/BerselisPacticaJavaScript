@@ -94,6 +94,7 @@
     border-radius: 4px;
     user-select: none;
     -webkit-transition: 0.2s;
+    float: right;
 }
 .btn:hover{
     border-radius: 10px;

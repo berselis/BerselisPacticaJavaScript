@@ -1,3 +1,13 @@
+const body = document.getElementById('cuerpo');
+
+const timer = setInterval(function(){
+    DrawElement();
+}, 500);
+
+function StopInterval(){
+    clearInterval(timer);
+
+}
 function DrawElement(){
     //Creando el Elemento
     const newDiv = document.createElement("div");
@@ -12,7 +22,8 @@ function DrawElement(){
     newDiv.style.backgroundColor = colores[parseInt(Math.random() * colores.length)];
 
     //Asignando un punto aleatorio desde el margen dela izquierda
-    let izquierda = document.getElementById('drawArea').offsetWidth;
+    let izquierda = document.getElementById('drawArea').offsetWidth / 1.232323;
+    
     newDiv.style.left = ( Math.random() * izquierda) + 'px';
     
     //Asignando un punto aleatorio desde el margen superior
@@ -46,3 +57,5 @@ function ClearElements(){
 
 
 }
+
+

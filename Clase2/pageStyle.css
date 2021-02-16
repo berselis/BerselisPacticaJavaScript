@@ -42,7 +42,11 @@
     border-color: gray;
 }
 .containerArea{
+    padding: 30px;
+    width: 100%;
     margin:10px;
+    position: fixed;
+
 }
 .drawElementNew{
 	border-radius: 50%;
