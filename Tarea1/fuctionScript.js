@@ -1,7 +1,3 @@
-const Formulario = document.getElementById('Formulario');
-
-Formulario.addEventListener("submit", AplicarCambios);
-
 const AplicarCambios = function(event){
     event.preventDefault();
 
@@ -19,3 +15,10 @@ const AplicarCambios = function(event){
     
 }
 
+const Formulario = document.getElementById('Formulario');
+Formulario.addEventListener("submit", AplicarCambios);
+
+const Rango = document.getElementById('Rango');
+Rango.addEventListener("change", function(event){
+console.log(event.target.value);
+});

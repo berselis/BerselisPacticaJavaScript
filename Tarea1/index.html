@@ -39,34 +39,39 @@
                         <td class="LeftPanel">
                             <form id="Formulario">
                                 <table>
-                                <tbody>
-                                    <tr>
-                                        <td>
-                                            <labe>Tamaño de letra</labe><br>
-                                            <input class="Textbox" name="SizeLetra" type="number" min="10" placeholder="18" max="100"><span> px</span>
-                                        </td>
-                                        <td>
-                                            <label>Ancho Objeto</label><br>
-                                            <input class="Textbox"  name="SizeAncho" type="number" min="10" placeholder="350" max="1200"><span> px</span>
-                                        </td>
-                                        <td>
-                                            <label>Altura Objeto</label><br>
-                                            <input class="Textbox"  name="SizeAlto" type="number" min="10" placeholder="350" max="500"><span> px</span>
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
+                                    <tbody>
+                                        <tr>
+                                            <td>
+                                                <labe>Tamaño de letra</labe><br>
+                                                <input class="Textbox" name="SizeLetra" type="number" min="10" placeholder="18" max="100"><span> px</span>
+                                            </td>
+                                            <td>
+                                                <label>Ancho Objeto</label><br>
+                                                <input class="Textbox"  name="SizeAncho" type="number" min="10" placeholder="350" max="1200"><span> px</span>
+                                            </td>
+                                            <td>
+                                                <label>Altura Objeto</label><br>
+                                                <input class="Textbox"  name="SizeAlto" type="number" min="10" placeholder="350" max="500"><span> px</span>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td colspan="3">
+                                                <input id="Rango" class="Textbox" type="range" style="width: 100%;" min="1" max="99"> 
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
                                 <hr>
                                 <label>Color de fondo</label><br>
                                 <input class="Textbox" id="SetColor" name="SetColor" value="#FFFFFF" type="color">
                                 <hr>
-                                <input class="btn" type="submit" value="Aplicar Cambios">
+                                <input class="btn" type="submit" placeholder="TXTX" value="Aplicar Cambios">
                             </form>
 
                         </td>
                         <td class="RightPanel">
 
-                            <div class="objetoStyle" id="objeto">
+                            <div id="objeto">
                                 <p>Texto dentro del objeto</p>
 
 
