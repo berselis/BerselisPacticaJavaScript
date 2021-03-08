@@ -1,0 +1,132 @@
+.container {
+    width: 99%;
+    margin: auto;
+    border: solid 1px;
+    border-radius: 10px;
+}
+
+.bannerInnerTitle {
+    text-align: center;
+    background-color: cornflowerblue;
+    width: 40%;
+    margin: auto;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    border-radius: 25px;
+}
+
+.bannerInnerTitle h2 {
+    font-family: "Josefin Slab", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+
+.bannerInnerText {
+    text-align: center;
+    font-family: "Josefin Slab", "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+.bannerInnerText p {
+    text-align: justify;
+    width: 50%;
+    margin: auto;
+}
+
+.bannerInnerContent {
+    display: inline-block;
+    width: 100%;
+    margin: auto;
+}
+
+.bannerInnerContent table {
+    width: 90%;
+    margin: auto;
+}
+
+.LeftPanel {
+    width: 25%;
+}
+
+.RightPanel {
+    border: solid 1px;
+    height: 500px;
+    border-radius: 15px;
+}
+
+#objeto {
+    border: solid 3px #676767;
+    border-radius: 18%;
+    width: 350px;
+    height: 350px;
+    margin: auto;
+    text-align: center;
+    vertical-align: middle;
+}
+
+.LeftPanel p {
+    text-align: center;
+    font-family: "Josefin Slab", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 1em;
+    font-weight: 700;
+}
+
+.LeftPanel form .Textbox {
+    height: 22px;
+    color: gray;
+    font-size: 20px;
+    width: 50px;
+    text-align: center;
+    vertical-align: middle;
+    padding: 5px;
+    user-select: none;
+}
+
+.botonPurple {
+    color: #ffffff;
+    font-weight: bold;
+    background-color: indigo;
+    border-color: black;
+    margin-bottom: 0;
+    margin-right: 10px;
+    text-align: center;
+    vertical-align: middle;
+    cursor: pointer;
+    padding: 6px 12px;
+    font-size: 18px;
+    border-radius: 4px;
+    user-select: none;
+    -webkit-transition: 0.2s;
+    float: right;
+}
+
+.botonPurple:hover {
+    border-radius: 10px;
+    color: black;
+    background-color: ivory;
+    border-color: gray;
+}
+
+.botonRed {
+    color: #ffffff;
+    font-weight: bold;
+    background-color: rgb(165, 10, 69);
+    border-color: black;
+    margin-bottom: 0;
+    margin-right: 10px;
+    text-align: center;
+    vertical-align: middle;
+    cursor: pointer;
+    padding: 6px 12px;
+    font-size: 18px;
+    border-radius: 4px;
+    user-select: none;
+    -webkit-transition: 0.2s;
+    float: right;
+}
+
+.botonRed:hover {
+    border-radius: 10px;
+    color: black;
+    background-color: ivory;
+    border-color: gray;
+}

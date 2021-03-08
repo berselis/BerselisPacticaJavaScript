@@ -12,13 +12,10 @@ const AplicarCambios = function(event){
     objeto.style.backgroundColor = color;
     objeto.style.width = ancho + 'px';
     objeto.style.height = alto + 'px';
+
     
 }
 
 const Formulario = document.getElementById('Formulario');
-Formulario.addEventListener("submit", AplicarCambios);
 
-const Rango = document.getElementById('Rango');
-Rango.addEventListener("change", function(event){
-console.log(event.target.value);
-});
+Formulario.addEventListener("submit", AplicarCambios);
