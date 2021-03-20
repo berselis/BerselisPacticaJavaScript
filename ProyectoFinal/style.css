@@ -4,3 +4,35 @@
     }
 
 }
+
+.inner-tittleRaw >.form-check> .form-check-label{  
+    font-weight: 800;
+    color:rgba(0,0,0,.25);
+    transition: 0.7s;
+}
+.inner-tittleAct >.form-check> .form-check-label{  
+    font-weight: 800;
+    color:#0d6efd;
+    transition: 0.7s;
+}
+
+.inner-tittleRaw{
+    border-bottom: solid 1px rgba(0,0,0,.25);
+    transition: 0.7s;
+}
+.inner-tittleAct{
+    border-bottom: solid 1px #0d6efd;
+    transition: 0.7s;
+}
+
+.form-check-input:hover{
+    cursor:pointer;
+}
+.listDetail{
+    font-size: 18px !important;
+    color:rgb(88, 83, 83);
+    text-align: justify;
+}
+.listDetail::before{
+    content: "— ";
+}
