@@ -33,6 +33,6 @@
     color:rgb(88, 83, 83);
     text-align: justify;
 }
-.listDetail::before{
+/* .listDetail::before{
     content: "— ";
-}
+} */
