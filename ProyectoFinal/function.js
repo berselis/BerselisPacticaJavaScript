@@ -1,3 +1,17 @@
+
+function ReemplaceLocalDataBase() {
+    Tareas = [];
+    for (let x = 0; x < listItems.children.length; x++) {
+        let Tarea = {
+            Titulo: listItems.children[x].firstChild.firstChild.lastChild.innerText,
+            Detalle: listItems.children[x].firstChild.nextSibling.innerText
+        };
+
+        Tareas.push(Tarea);
+    }
+    localStorage.setItem(localStorageKey, JSON.stringify(Tareas));
+
+}
 function AddNewItems(titulo, detalle) {
 
     const divInner = document.createElement('div');
@@ -44,13 +58,10 @@ function AddNewItems(titulo, detalle) {
     li.appendChild(p);
     li.appendChild(buttonClose);
     li.appendChild(buttonEdit);
-    
-    
-
     return li;
 }
 function GetNewToastDraw(texto) {
-    
+
 
     const div0 = document.createElement('div');
     div0.classList.add('toast', 'fade', 'hide', 'text-white', 'bg-primary');
@@ -99,10 +110,21 @@ const SetInfoForm = function (formulario) {
         formulario.target.descripcion.value = null;
         formulario.target.titulo.focus();
 
+
+        let Tarea = {
+            Titulo: titulo,
+            Detalle: detalle
+        };
+
+        dataInLocalStorage = localStorage.getItem(localStorageKey);
+        if (dataInLocalStorage !== null) {
+            Tareas = JSON.parse(dataInLocalStorage);
+        }
+
+        Tareas.push(Tarea);
+        localStorage.setItem(localStorageKey, JSON.stringify(Tareas));
     } else if (accion == "Editar") {
-        
         for (let x = 0; x < listItems.children.length; x++) {
-            console.log(listItems.children[x].lastChild.classList);
             if (listItems.children[x].lastChild.classList[3] == 'edit') {
                 listItems.children[x].firstChild.firstChild.lastChild.innerText = titulo;
                 listItems.children[x].firstChild.nextSibling.innerText = detalle;
@@ -114,8 +136,11 @@ const SetInfoForm = function (formulario) {
                 formulario.target.titulo.value = null;
                 formulario.target.descripcion.value = null;
                 formulario.target.titulo.focus();
+                formulario.path[0].firstChild.remove();
+                break;
             }
         }
+        ReemplaceLocalDataBase();
     }
 }
 const ChangeStatus = function (inputCheck) {
@@ -129,11 +154,14 @@ const ChangeStatus = function (inputCheck) {
         newLi.addEventListener('hidden.bs.toast', ClosedToast);
         listToast.append(newLi);
 
-        const toast = new bootstrap.Toast(newLi, {
-            animation: true,
-            autohide: true,
-            delay: 10000
-        });
+        const toast = new bootstrap.Toast(
+            newLi,
+            {
+                animation: true,
+                autohide: true,
+                delay: 10000
+            }
+        );
         toast.show();
 
 
@@ -144,24 +172,22 @@ const ChangeStatus = function (inputCheck) {
     }
 }
 const DeleteItems = function (closeButton) {
-    
-    const myModal = new bootstrap.Modal(document.getElementById('modalDeleteTarea'), {
-        backdrop: 'static',
-        keyboard: false,
-        focus: true
-    });
-    document.getElementById('modalTitleTarea').innerText = closeButton.path[1].firstChild.firstChild.lastChild.innerText;
-    
-    myModal.show();
-
-    const buttonYes = myModal._element.lastElementChild.lastElementChild.lastElementChild.lastElementChild;
-    buttonYes.addEventListener('click', () => {
-        if (closeButton.target.value == 'false') {
+    if (closeButton.target.value == 'false') {
+        const myModal = new bootstrap.Modal(document.getElementById('modalDeleteTarea'), {
+            backdrop: 'static',
+            keyboard: false,
+            focus: true
+        });
+        document.getElementById('modalTitleTarea').innerText = closeButton.path[1].firstChild.firstChild.lastChild.innerText;
+        myModal.show();
+        const buttonYes = myModal._element.lastElementChild.lastElementChild.lastElementChild.lastElementChild;
+        buttonYes.addEventListener('click', () => {
             const element = closeButton.path[1];
             element.remove();
-        }       
-        myModal.hide();
-    });
+            myModal.hide();
+            ReemplaceLocalDataBase();
+        });
+    }
 }
 const EditElement = function (editButton) {
     for (let x = 0; x < listItems.children.length; x++) {
@@ -180,11 +206,47 @@ const EditElement = function (editButton) {
     btnAddEdit.classList.remove('btn-primary');
     btnAddEdit.classList.add('btn-outline-success');
 
+    const cancelEdit = document.createElement('button');
+    cancelEdit.type = 'button';
+    cancelEdit.className = 'btn btn-secondary top-0 end-0';
+    cancelEdit.innerText = 'Cancelar Editar';
+    cancelEdit.addEventListener('click', (eL) => {
+        for (let x = 0; x < listItems.children.length; x++) {
+            if (listItems.children[x].lastChild.classList[3] == 'edit') {
+                listItems.children[x].lastChild.classList.remove('edit');
+                eL.target.remove();
+
+                document.getElementById('titulo').value = null;
+                document.getElementById('descripcion').value = null;
+                document.getElementById('titulo').focus();
+
+                document.getElementById('AddEditButton').innerText = 'Agregar';
+                document.getElementById('AddEditButton').classList.remove('btn-outline-success');
+                document.getElementById('AddEditButton').classList.add('btn-primary');
+                break;
+            }
+        }
+
+
+    });
+
+    myForm.prepend(cancelEdit);
+
 }
 
+const localStorageKey = 'ListadoDB001';
 const myForm = document.getElementById("myForm");
 myForm.addEventListener('submit', SetInfoForm);
 const listItems = document.getElementById('listIntems');
 const listToast = document.getElementById('listToast');
+let Tareas = new Array();
 
-
+window.onload = () => {
+    dataInLocalStorage = localStorage.getItem(localStorageKey);
+    if (dataInLocalStorage !== null) {
+        Tareas = JSON.parse(dataInLocalStorage);
+        Tareas.forEach((tarea) => {
+            listItems.append(AddNewItems(tarea.Titulo, tarea.Detalle));
+        });
+    }
+}
