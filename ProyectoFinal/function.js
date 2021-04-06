@@ -4,15 +4,20 @@ function ReemplaceLocalDataBase() {
     for (let x = 0; x < listItems.children.length; x++) {
         let Tarea = {
             Titulo: listItems.children[x].firstChild.firstChild.lastChild.innerText,
-            Detalle: listItems.children[x].firstChild.nextSibling.innerText
+            Detalle: listItems.children[x].firstChild.nextSibling.innerText,
+            IsSelected: listItems.children[x].firstChild.firstChild.children[0].checked
         };
-
+        
         Tareas.push(Tarea);
     }
-    localStorage.setItem(localStorageKey, JSON.stringify(Tareas));
+    localStorage.setItem(DBKey, JSON.stringify(Tareas));
 
 }
-function AddNewItems(titulo, detalle) {
+function AddNewItems(titulo, detalle, IsSelected) {
+    let classSelected = 'inner-tittleRaw';
+    if(IsSelected){
+        classSelected = 'inner-tittleAct';
+    }
 
     const divInner = document.createElement('div');
     divInner.classList.add('form-check', 'form-switch');
@@ -20,6 +25,7 @@ function AddNewItems(titulo, detalle) {
     const inputCheck = document.createElement('input');
     inputCheck.className = 'form-check-input';
     inputCheck.type = 'checkbox';
+    inputCheck.checked = IsSelected;
     inputCheck.addEventListener('click', ChangeStatus);
 
     const label = document.createElement('label');
@@ -30,7 +36,7 @@ function AddNewItems(titulo, detalle) {
     divInner.appendChild(label);
 
     const divOuter = document.createElement('div');
-    divOuter.classList.add('col-md-12', 'inner-tittleRaw');
+    divOuter.classList.add('col-md-12', classSelected);
     divOuter.appendChild(divInner);
 
     const p = document.createElement('p');
@@ -41,7 +47,7 @@ function AddNewItems(titulo, detalle) {
     buttonClose.type = 'button';
     buttonClose.classList.add('btn-close', 'position-absolute', 'top-0', 'end-0');
     buttonClose.setAttribute('aria-label', 'Close');
-    buttonClose.value = false;
+    buttonClose.value = IsSelected;
     buttonClose.addEventListener('click', DeleteItems);
 
 
@@ -61,8 +67,6 @@ function AddNewItems(titulo, detalle) {
     return li;
 }
 function GetNewToastDraw(texto) {
-
-
     const div0 = document.createElement('div');
     div0.classList.add('toast', 'fade', 'hide', 'text-white', 'bg-primary');
     div0.setAttribute('role', 'alert');
@@ -105,7 +109,7 @@ const SetInfoForm = function (formulario) {
 
 
     if (accion == "Agregar") {
-        listItems.append(AddNewItems(titulo, detalle));
+        listItems.append(AddNewItems(titulo, detalle, false));
         formulario.target.titulo.value = null;
         formulario.target.descripcion.value = null;
         formulario.target.titulo.focus();
@@ -113,16 +117,17 @@ const SetInfoForm = function (formulario) {
 
         let Tarea = {
             Titulo: titulo,
-            Detalle: detalle
+            Detalle: detalle,
+            IsSelected: false
         };
 
-        dataInLocalStorage = localStorage.getItem(localStorageKey);
-        if (dataInLocalStorage !== null) {
-            Tareas = JSON.parse(dataInLocalStorage);
+        ListaDB001 = localStorage.getItem(DBKey);
+        if (ListaDB001 !== null) {
+            Tareas = JSON.parse(ListaDB001);
         }
 
         Tareas.push(Tarea);
-        localStorage.setItem(localStorageKey, JSON.stringify(Tareas));
+        localStorage.setItem(DBKey, JSON.stringify(Tareas));
     } else if (accion == "Editar") {
         for (let x = 0; x < listItems.children.length; x++) {
             if (listItems.children[x].lastChild.classList[3] == 'edit') {
@@ -170,6 +175,7 @@ const ChangeStatus = function (inputCheck) {
         element.classList.remove('inner-tittleAct');
         element.classList.add('inner-tittleRaw');
     }
+    ReemplaceLocalDataBase();
 }
 const DeleteItems = function (closeButton) {
     if (closeButton.target.value == 'false') {
@@ -234,7 +240,8 @@ const EditElement = function (editButton) {
 
 }
 
-const localStorageKey = 'ListadoDB001';
+const DBKey = 'ListadoDB001';
+let ListaDB001;
 const myForm = document.getElementById("myForm");
 myForm.addEventListener('submit', SetInfoForm);
 const listItems = document.getElementById('listIntems');
@@ -242,11 +249,11 @@ const listToast = document.getElementById('listToast');
 let Tareas = new Array();
 
 window.onload = () => {
-    dataInLocalStorage = localStorage.getItem(localStorageKey);
-    if (dataInLocalStorage !== null) {
-        Tareas = JSON.parse(dataInLocalStorage);
+    ListaDB001 = localStorage.getItem(DBKey);
+    if (ListaDB001 !== null) {
+        Tareas = JSON.parse(ListaDB001);
         Tareas.forEach((tarea) => {
-            listItems.append(AddNewItems(tarea.Titulo, tarea.Detalle));
+            listItems.append(AddNewItems(tarea.Titulo, tarea.Detalle, tarea.IsSelected));
         });
     }
 }
